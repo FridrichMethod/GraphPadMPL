@@ -1,0 +1,13 @@
+name: graphpad
+channels:
+  - defaults
+dependencies:
+  - jupyter
+  - pip
+  - python=3.12
+  - pip:
+      - matplotlib
+      - numpy
+      - pandas
+      - scipy
+      - seaborn
