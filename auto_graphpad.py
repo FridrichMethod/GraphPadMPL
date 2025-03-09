@@ -3,6 +3,7 @@
 from itertools import cycle
 from typing import Any, Sequence
 
+import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib import ticker
@@ -23,6 +24,12 @@ CUSTOM_PALETTE_SNSSTYLE = cycle(
         "#F8A450",
     )
 )
+
+
+def add_custom_fonts(*args) -> None:
+    """Add custom fonts to the font manager."""
+    for font in args:
+        fm.fontManager.addfont(font)
 
 
 def auto_style(
@@ -53,7 +60,7 @@ def auto_style(
     Please put this function on the top of the script to enable global settings.
     """
 
-    plt.style.use("GraphPadPrism")
+    plt.style.use("./GraphPadPrism.mplstyle")
     sns.set_palette("bright", n_colors=n_colors)
 
     if palette_snsstyle is not None:
@@ -133,3 +140,7 @@ def auto_ticks(
         ax.set_ylim(bottom=ax.get_yticks()[0])
     if top is None and (ax.get_yticks()[-1] != ax.get_ylim()[-1]):
         ax.set_ylim(top=ax.get_yticks()[-1])
+
+
+if __name__ == "__main__":
+    auto_style()
