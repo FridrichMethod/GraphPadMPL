@@ -34,8 +34,8 @@ def add_custom_fonts(*args) -> None:
 
 def auto_style(
     rc_mplstyle: dict[str, Any] | None = None,
-    fname_mplstyle: str | None = None,
-    palette_snsstyle: str | Sequence[str] | None = None,
+    fname_mplstyle: str | None = "./GraphPadPrism.mplstyle",
+    palette_snsstyle: str | Sequence[str] | None = "bright",
     n_colors: int | None = None,
 ) -> None:
     """Initialize the matplotlib and seaborn styles.
@@ -59,9 +59,6 @@ def auto_style(
     -----
     Please put this function on the top of the script to enable global settings.
     """
-
-    plt.style.use("./GraphPadPrism.mplstyle")
-    sns.set_palette("bright", n_colors=n_colors)
 
     if palette_snsstyle is not None:
         sns.set_palette(palette_snsstyle, n_colors=n_colors)
