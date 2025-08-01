@@ -1,2 +1,3 @@
 # GraphPadMPL
-GraphPad Prism style for matplotlib
+
+GraphPad-like visual styling helpers for Matplotlib/Seaborn

@@ -137,7 +137,3 @@ def auto_ticks(
         ax.set_ylim(bottom=ax.get_yticks()[0])
     if top is None and (ax.get_yticks()[-1] != ax.get_ylim()[-1]):
         ax.set_ylim(top=ax.get_yticks()[-1])
-
-
-if __name__ == "__main__":
-    auto_style()

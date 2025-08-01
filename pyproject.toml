@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graphpadmpl"
+version = "0.1.0"
+description = "GraphPad-like visual styling helpers for Matplotlib/Seaborn"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+
+authors = [{ name = "Zhaoyang Li", email = "zhaoyangli@stanford.edu" }]
+
+dependencies = ["matplotlib", "seaborn", "numpy", "pandas", "scipy"]
+
+[project.optional-dependencies]
+notebook = ["jupyter"]
+
+[tool.setuptools]
+packages = []
+py-modules = ["auto_graphpad"]
