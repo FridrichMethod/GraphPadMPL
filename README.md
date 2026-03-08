@@ -1,3 +1,3 @@
-# GraphPadMPL
+# mplplots
 
-GraphPad-like visual styling helpers for Matplotlib/Seaborn
+Visual styling helpers for Matplotlib/Seaborn
