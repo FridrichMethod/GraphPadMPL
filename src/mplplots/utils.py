@@ -1,78 +1,47 @@
-"""Auto settings for GraphPad style in matplotlib and seaborn."""
+"""Utility functions for mplplots."""
 
-import importlib.resources
-from itertools import cycle
-from typing import Any, Sequence
+import os
+from pathlib import Path
 
 import matplotlib.font_manager as fm
-import matplotlib.pyplot as plt
-import seaborn as sns
 from matplotlib import ticker
 from matplotlib.axes import Axes
 
-CUSTOM_PALETTE_SNSSTYLE = cycle(
-    (
-        "#BCE4F9",
-        "#7BD3F2",
-        "#F0AECB",
-        "#E88791",
-        "#C4DDB1",
-        "#97D9A8",
-        "#CCCCE6",
-        "#9D9DCF",
-        "#8FB0DD",
-        "#F0CEA4",
-        "#F8A450",
-    )
-)
-
-_DEFAULT_MPLSTYLE = str(
-    importlib.resources.files("mplplots") / "styles" / "GraphPadPrism.mplstyle"
-)
+type StrPath = str | os.PathLike[str]
 
 
-def add_custom_fonts(*args) -> None:
-    """Add custom fonts to the font manager."""
-    for font in args:
-        fm.fontManager.addfont(font)
+def norm_path(
+    path: StrPath,
+    expandvars: bool = True,
+    expanduser: bool = True,
+    resolve: bool = True,
+) -> Path:
+    """Normalize a file path.
 
+    Args:
+        path (StrPath): The file path to normalize.
+        expandvars (bool, optional): Whether to expand environment variables. Defaults to True.
+        expanduser (bool, optional): Whether to expand the user directory. Defaults to True.
+        resolve (bool, optional): Whether to resolve the path. Defaults to True.
 
-def auto_style(
-    rc_mplstyle: dict[str, Any] | None = None,
-    fname_mplstyle: str | None = None,
-    palette_snsstyle: str | Sequence[str] | None = "bright",
-    n_colors: int | None = None,
-) -> None:
-    """Initialize the matplotlib and seaborn styles.
-
-    Args
-    ----
-    rc_mplstyle : dict[str, Any] | None
-        The matplotlib style for rcParams.
-    fname_mplstyle : str | None
-        The matplotlib style file path. Defaults to the bundled GraphPadPrism.mplstyle.
-    palette_snsstyle : str | Sequence[str] | None
-        The seaborn palette style.
-    n_colors : int | None
-        The number of colors to generate.
-
-    Returns
-    -------
-    None
-
-    Notes
-    -----
-    Please put this function on the top of the script to enable global settings.
+    Returns:
+        Path: The normalized file path.
     """
-    if fname_mplstyle is None:
-        fname_mplstyle = _DEFAULT_MPLSTYLE
+    p = Path(path)
+    if expandvars:
+        p = Path(os.path.expandvars(p))
+    if expanduser:
+        p = p.expanduser()
+    if resolve:
+        p = p.resolve()
 
-    if palette_snsstyle is not None:
-        sns.set_palette(palette_snsstyle, n_colors=n_colors)
-    if fname_mplstyle is not None:
-        plt.style.use(fname_mplstyle)
-    if rc_mplstyle is not None:
-        plt.style.use(rc_mplstyle)
+    return p
+
+
+def add_custom_fonts(*paths: StrPath) -> None:
+    """Add custom fonts to the font manager."""
+    for path in paths:
+        fm.fontManager.addfont(path)
 
 
 def auto_ticks(
@@ -85,7 +54,7 @@ def auto_ticks(
 ) -> None:
     """Set the major and minor ticks of an axis automatically.
 
-    Args
+    Args:
     ----
     ax : Axes
         The axis to be set.
@@ -98,11 +67,10 @@ def auto_ticks(
     top : float | None, optional
         The top limit of the y-axis, by default None.
 
-    Notes
+    Notes:
     -----
     Please put this function after the data are passed to the axis.
     """
-
     # Set the major and minor ticks of the x-axis
     if left is not None:
         ax.set_xlim(left=left)
