@@ -25,7 +25,7 @@ def norm_path(
         resolve (bool, optional): Whether to resolve the path. Defaults to True.
 
     Returns:
-        Path: The normalized file path.
+        The normalized file path.
     """
     p = Path(path)
     if expandvars:
@@ -39,7 +39,11 @@ def norm_path(
 
 
 def add_custom_fonts(*paths: StrPath) -> None:
-    """Add custom fonts to the font manager."""
+    """Add custom fonts to the font manager.
+
+    Args:
+        paths (StrPath): Paths to font files to register.
+    """
     for path in paths:
         fm.fontManager.addfont(path)
 
@@ -55,21 +59,14 @@ def auto_ticks(
     """Set the major and minor ticks of an axis automatically.
 
     Args:
-    ----
-    ax : Axes
-        The axis to be set.
-    left : float | None, optional
-        The left limit of the x-axis, by default None.
-    right : float | None, optional
-        The right limit of the x-axis, by default None.
-    bottom : float | None, optional
-        The bottom limit of the y-axis, by default None.
-    top : float | None, optional
-        The top limit of the y-axis, by default None.
+        ax (Axes): The axis to set ticks for.
+        left (float | None, optional): The left limit of the x-axis. Defaults to None.
+        right (float | None, optional): The right limit of the x-axis. Defaults to None.
+        bottom (float | None, optional): The bottom limit of the y-axis. Defaults to None.
+        top (float | None, optional): The top limit of the y-axis. Defaults to None.
 
     Notes:
-    -----
-    Please put this function after the data are passed to the axis.
+        Put this function after the data are passed to the axis.
     """
     # Set the major and minor ticks of the x-axis
     if left is not None:
