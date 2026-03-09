@@ -48,7 +48,7 @@ def add_custom_fonts(*paths: StrPath) -> None:
         fm.fontManager.addfont(path)
 
 
-def auto_ticks(
+def auto_ticks(  # noqa: C901
     ax: Axes,
     *,
     left: float | None = None,
