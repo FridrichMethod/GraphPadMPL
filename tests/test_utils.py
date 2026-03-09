@@ -3,6 +3,7 @@
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+
 from mplplots.utils import auto_ticks, norm_path
 
 
