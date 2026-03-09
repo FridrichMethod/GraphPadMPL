@@ -53,8 +53,8 @@ def auto_ticks(  # noqa: C901
     *,
     left: float | None = None,
     right: float | None = None,
-    bottom: float | None = None,
     top: float | None = None,
+    bottom: float | None = None,
 ) -> None:
     """Set the major and minor ticks of an axis automatically.
 
