@@ -104,9 +104,14 @@ with plt.style.context(STYLE):
         xc = rng.normal(2 + i * 1.5, 0.4, 12)
         yc = rng.normal(10 + i * 5, 2, 12)
         ax.errorbar(
-            xc.mean(), yc.mean(),
-            xerr=xc.std(), yerr=yc.std(),
-            fmt="o", color=coral[i * 2], markersize=8, capsize=4,
+            xc.mean(),
+            yc.mean(),
+            xerr=xc.std(),
+            yerr=yc.std(),
+            fmt="o",
+            color=coral[i * 2],
+            markersize=8,
+            capsize=4,
             label=f"Group {i + 1}",
         )
     auto_ticks(ax)

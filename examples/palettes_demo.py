@@ -63,11 +63,31 @@ plt.close(fig)
 # 4. Full catalogue — all 25 custom-style palettes as swatches
 # ---------------------------------------------------------------------------
 ALL_NAMES = [
-    "CUSTOM", "PASTEL", "WARM", "COOL", "EARTH",
-    "OCEAN", "ROSE", "FOREST", "LAVENDER", "SUNSET", "COASTAL",
-    "SPRING", "SUMMER", "AUTUMN", "WINTER",
-    "DAWN", "DUSK",
-    "CANDY", "SMOKE", "VINTAGE", "NORDIC", "MEADOW", "CORAL", "TROPICAL", "POWDER",
+    "CUSTOM",
+    "PASTEL",
+    "WARM",
+    "COOL",
+    "EARTH",
+    "OCEAN",
+    "ROSE",
+    "FOREST",
+    "LAVENDER",
+    "SUNSET",
+    "COASTAL",
+    "SPRING",
+    "SUMMER",
+    "AUTUMN",
+    "WINTER",
+    "DAWN",
+    "DUSK",
+    "CANDY",
+    "SMOKE",
+    "VINTAGE",
+    "NORDIC",
+    "MEADOW",
+    "CORAL",
+    "TROPICAL",
+    "POWDER",
 ]
 
 fig, axes = plt.subplots(len(ALL_NAMES), 1, figsize=(12, 18))
@@ -108,7 +128,7 @@ plt.close(fig)
 # ---------------------------------------------------------------------------
 x = np.linspace(0, 4, 80)
 fig, ax = plt.subplots(figsize=(8, 4))
-spring = getattr(palettes, "SPRING")
+spring = palettes.SPRING
 base = np.zeros_like(x)
 for i in range(6):
     y = np.abs(np.sin(x + i * 0.5)) * (1 + 0.3 * i)
@@ -123,7 +143,7 @@ plt.close(fig)
 # 7. Pie chart with CANDY palette
 # ---------------------------------------------------------------------------
 fig, ax = plt.subplots(figsize=(5, 5))
-candy = getattr(palettes, "CANDY")
+candy = palettes.CANDY
 sizes = [22, 18, 15, 13, 10, 8, 7, 4, 2, 1]
 ax.pie(sizes, colors=candy[:10], startangle=90, wedgeprops={"edgecolor": "white", "linewidth": 1.5})
 ax.set_title("CANDY palette — pie chart")
@@ -134,7 +154,7 @@ plt.close(fig)
 # 8. Horizontal bar chart with DUSK palette
 # ---------------------------------------------------------------------------
 fig, ax = plt.subplots(figsize=(7, 5))
-dusk = getattr(palettes, "DUSK")
+dusk = palettes.DUSK
 categories = [f"Item {chr(65 + i)}" for i in range(11)]
 values = [45, 38, 35, 30, 28, 24, 20, 18, 14, 10, 6]
 ax.barh(categories, values, color=dusk)

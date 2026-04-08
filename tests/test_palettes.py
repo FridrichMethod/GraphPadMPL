@@ -7,14 +7,8 @@ import pytest
 
 import mplplots.palettes as palettes
 from mplplots.palettes import (
-    BLUES,
     CUSTOM,
     CUSTOM_CYCLE,
-    GREENS,
-    GREYS,
-    ORANGES,
-    PURPLES,
-    REDS,
     get_colors,
 )
 
@@ -22,11 +16,31 @@ HEX_RE = re.compile(r"^#[0-9a-f]{6}$")
 
 # Every hand-picked 11-color palette and its cycle
 CUSTOM_STYLE_PALETTES = [
-    "CUSTOM", "PASTEL", "WARM", "COOL", "EARTH",
-    "OCEAN", "ROSE", "FOREST", "LAVENDER", "SUNSET", "COASTAL",
-    "SPRING", "SUMMER", "AUTUMN", "WINTER",
-    "DAWN", "DUSK",
-    "CANDY", "SMOKE", "VINTAGE", "NORDIC", "MEADOW", "CORAL", "TROPICAL", "POWDER",
+    "CUSTOM",
+    "PASTEL",
+    "WARM",
+    "COOL",
+    "EARTH",
+    "OCEAN",
+    "ROSE",
+    "FOREST",
+    "LAVENDER",
+    "SUNSET",
+    "COASTAL",
+    "SPRING",
+    "SUMMER",
+    "AUTUMN",
+    "WINTER",
+    "DAWN",
+    "DUSK",
+    "CANDY",
+    "SMOKE",
+    "VINTAGE",
+    "NORDIC",
+    "MEADOW",
+    "CORAL",
+    "TROPICAL",
+    "POWDER",
 ]
 
 # Colormap-derived 8-color palettes
