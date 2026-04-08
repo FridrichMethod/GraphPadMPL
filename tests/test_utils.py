@@ -1,30 +1,8 @@
 """Tests for mplplots.utils."""
 
-from pathlib import Path
-
 import matplotlib.pyplot as plt
 
-from mplplots.utils import auto_ticks, norm_path
-
-
-class TestNormPath:
-    def test_resolves_relative_path(self) -> None:
-        result = norm_path(".")
-        assert result.is_absolute()
-        assert result.exists()
-
-    def test_expanduser(self) -> None:
-        result = norm_path("~", resolve=False)
-        assert "~" not in str(result)
-
-    def test_with_path_object(self) -> None:
-        result = norm_path(Path("."))
-        assert isinstance(result, Path)
-        assert result.is_absolute()
-
-    def test_resolve_false(self) -> None:
-        result = norm_path(".", resolve=False)
-        assert not result.is_absolute()
+from mplplots.utils import auto_ticks
 
 
 class TestAutoTicks:

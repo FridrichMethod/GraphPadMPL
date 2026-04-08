@@ -1,41 +1,12 @@
 """Utility functions for mplplots."""
 
 import os
-from pathlib import Path
 
 import matplotlib.font_manager as fm
 from matplotlib import ticker
 from matplotlib.axes import Axes
 
 type StrPath = str | os.PathLike[str]
-
-
-def norm_path(
-    path: StrPath,
-    expandvars: bool = True,
-    expanduser: bool = True,
-    resolve: bool = True,
-) -> Path:
-    """Normalize a file path.
-
-    Args:
-        path (StrPath): The file path to normalize.
-        expandvars (bool, optional): Whether to expand environment variables. Defaults to True.
-        expanduser (bool, optional): Whether to expand the user directory. Defaults to True.
-        resolve (bool, optional): Whether to resolve the path. Defaults to True.
-
-    Returns:
-        The normalized file path.
-    """
-    p = Path(path)
-    if expandvars:
-        p = Path(os.path.expandvars(p))
-    if expanduser:
-        p = p.expanduser()
-    if resolve:
-        p = p.resolve()
-
-    return p
 
 
 def add_custom_fonts(*paths: StrPath) -> None:
