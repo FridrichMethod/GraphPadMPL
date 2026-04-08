@@ -15,3 +15,10 @@ repos:
       - id: ruff-check
         args: [--fix]
       - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.16.0
+    hooks:
+      - id: mypy
+        additional_dependencies: [matplotlib, numpy, pandas, scipy, seaborn]
+        args: [--config-file=pyproject.toml]
