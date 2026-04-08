@@ -16,6 +16,15 @@ Visual styling helpers for Matplotlib/Seaborn.
 - **Type check**: `mypy src/`
 - **Pre-commit**: `pre-commit run --all-files`
 
+## Before Committing
+
+Always run these before `git commit` and `git push`:
+
+1. `pre-commit run --all-files` — must pass with no errors
+2. `pytest` — all tests must pass
+
+Do not commit or push if either fails. Fix issues first.
+
 ## Code Style
 
 - Ruff for linting and formatting (line length 100, Google-style docstrings)
